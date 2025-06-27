@@ -2,6 +2,7 @@ import React from "react";
 import { CanvasRevealEffect } from "@/components/CanvasRevealEffect";
 import { Code, CheckCircle, BarChart2, ListChecks } from "lucide-react";
 import { Navbar } from "@/components/ui/mini-navbar";
+import Link from "next/link";
 
 const features = [
   {
@@ -42,7 +43,7 @@ export default function LandingPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
       </div>
 
-      <Navbar/>
+      <Navbar />
 
       <div className="relative z-10 px-6 py-16 mt-[15%]">
         <div className="max-w-4xl mx-auto text-center">
@@ -54,9 +55,11 @@ export default function LandingPage() {
             scalability.
           </p>
           <div className="mt-8 flex justify-center gap-4">
-            <button className="bg-white text-black font-semibold px-6 py-2 rounded-full hover:bg-gray-200">
-              Get Started
-            </button>
+            <Link href='/app/dashboard'>
+              <button className="bg-white text-black font-semibold px-6 py-2 rounded-full hover:bg-gray-200">
+                Get Started
+              </button>
+            </Link>
             <button className="border border-white px-6 py-2 rounded-full hover:bg-white hover:text-black">
               Learn More
             </button>
