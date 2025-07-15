@@ -8,4 +8,5 @@ export interface question {
   title: string;
   problemLink: string;
   difficulty: string;
+  topicId: string;
 }

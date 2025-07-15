@@ -43,7 +43,7 @@ export default function LandingPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
       </div>
 
-      <Navbar />
+      <Navbar route={"/"}/>
 
       <div className="relative z-10 px-6 py-16 mt-[15%]">
         <div className="max-w-4xl mx-auto text-center">
@@ -60,9 +60,6 @@ export default function LandingPage() {
                 Get Started
               </button>
             </Link>
-            <button className="border border-white px-6 py-2 rounded-full hover:bg-white hover:text-black">
-              Learn More
-            </button>
           </div>
         </div>
 

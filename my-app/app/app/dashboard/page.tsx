@@ -12,37 +12,11 @@ import { question, Topic } from "../types";
 import axios from "axios";
 import QuestionTable from "./table";
 
-const items = [
-  {
-    id: "1",
-    title: "What makes Origin UI different?",
-    content:
-      "Origin UI focuses on developer experience and performance. Built with TypeScript, it offers excellent type safety, follows accessibility standards, and provides comprehensive documentation with regular updates.",
-  },
-  {
-    id: "2",
-    title: "How can I customize the components?",
-    content:
-      "Use our CSS variables for global styling, or className and style props for component-specific changes. We support CSS modules, Tailwind, and dark mode out of the box.",
-  },
-  {
-    id: "3",
-    title: "Is Origin UI optimized for performance?",
-    content:
-      "Yes, with tree-shaking, code splitting, and minimal runtime overhead. Most components are under 5KB gzipped.",
-  },
-  {
-    id: "4",
-    title: "How accessible are the components?",
-    content:
-      "All components follow WAI-ARIA standards, featuring proper ARIA attributes, keyboard navigation, and screen reader support. Regular testing ensures compatibility with NVDA, VoiceOver, and JAWS.",
-  },
-];
-
 export default function Dashboard() {
   const [categoryId, setCategoryId] = useState<string>(
     "64e0e185-9f32-4209-8129-94d63b5f4c06"
   );
+  const [openTopicId, setOpenTopicId] = useState<string | null>("");
   const [topics, setTopics] = useState<Topic[]>([]);
   const [questions, setQuestions] = useState<question[]>([]);
 
@@ -68,6 +42,7 @@ export default function Dashboard() {
             `http://localhost:7000/api/question/${topic.id}`
           );
           setQuestions((prev) => [...prev, ...response.data.result]);
+          console.log(response.data.result);
         });
       } catch (error) {
         console.log(error);
@@ -85,6 +60,7 @@ export default function Dashboard() {
             collapsible
             className="w-full"
             defaultValue="3"
+            onValueChange={(value) => setOpenTopicId(value)}
           >
             {topics.map((topic) => (
               <AccordionItem value={topic.id} key={topic.id} className="py-2">
@@ -92,7 +68,7 @@ export default function Dashboard() {
                   {topic.name}
                 </AccordionTrigger>
                 <AccordionContent className="pb-2 ps-7 text-muted-foreground">
-                   <QuestionTable/>
+                   <QuestionTable questions={questions} openTopicId = {openTopicId as string} />
                 </AccordionContent>
               </AccordionItem>
             ))}
