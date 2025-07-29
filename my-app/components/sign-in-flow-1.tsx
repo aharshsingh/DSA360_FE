@@ -518,10 +518,10 @@ export const SignInPage = ({ className }: SignInPageProps) => {
                   >
                     <div className="space-y-1">
                       <h1 className="text-[2.5rem] font-bold leading-[1.1] tracking-tight text-white">
-                        Welcome Developer
+                        Welcome coder
                       </h1>
                       <p className="text-[1.8rem] text-white/70 font-light">
-                        Your sign in component
+                        Sign in here!
                       </p>
                     </div>
 
